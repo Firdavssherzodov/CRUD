@@ -73,7 +73,6 @@ const app = Vue.createApp({
         console.log(list);
       });
     },
-   
   },
 
   computed: {},
