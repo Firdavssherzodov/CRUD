@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="firdavs">
+      <div class=" md:w-full h-full md:justify-around  md:flex md:border">
+        <div class="d1 md:m-0 m-auto md:w-[40%] w-[90%] md:border">
+          <div class="md:w-[40%] w-[91%] bg-red-400   border border-red-600 h-10 absolute text-center text-white pt-2" v-if="error">{{errorHnadle}} 
+            <i class="fa-solid fa-x font-xs absolute left-[95%] top-[25%] hover:cursor-pointer active:text-slate-300 " v-on:click="Cancellation()"></i>
+          </div>
+          <form action="" class="p-12" @submit.prevent="addUser">
+            <label for="">
+              Name
+              <br />
+              <input type="text" class="border my-2 md:w-[90%] w-full h-[40px] mt-[10px] pl-[10px] rounded-xl" v-model="name" />
+            </label>
+            <label for="">
+              <br />
+              Email
+
+              <br />
+              <input type="name" class="border my-3 md:w-[90%] w-full h-[40px] mt-[10px] pl-[10px] rounded-xl" v-model="email" />
+            </label>
+            <label for="">
+              <br />
+              Job
+              <br />
+              <input type="name" class="border md:w-[90%] w-full h-[40px] mt-[10px] pl-[10px] rounded-xl" v-model="job" />
+            </label>
+            <br />
+            <button
+              class="button  md:w-44 w-full font-sans md:p-1.5 p-2 bg-blue-600 text-white font-sans"
+              type="submit"
+            >
+              Add
+            </button>
+          </form>
+        </div>
+        <div class="md:w-[60%] w-full ">
+          <table class="">
+            <tr class="border">
+              <th>N0</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Jop</th>
+              <th>Uptade</th>
+              <th>Delete</th>
+            </tr>
+            <tr class="border" v-for="(list,index) of data" :key="list">
+              <td>{{index+1}}</td>
+              <td>{{list.name}}</td>
+              <td>{{list.email}}</td>
+              <td>{{list.job}}</td>
+              <td>
+                <button
+                  class="text-white bg-green-600 p-1.5 rounded-lg text-xs px-4 py-2 active:bg-green-500"
+                  v-on:click="Update(index)"
+                >
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+              </td>
+              <td>
+                <button
+                  class="text-white bg-red-600 p-1.5 rounded-lg text-xs px-4 py-2 active:bg-red-500"
+                  v-on:click="Delete(index)"
+                >
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="mian.js"></script>
+  </body>
+</html>
